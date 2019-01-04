@@ -2,7 +2,16 @@
 - Clone the repository
 - Cd into the cloned folder
 - Create a virtualenv (python 3.7 used) and activate it
-- Execute pip install -r requirements.txt
+``` bash
+$ python3 -m venv venv
+```
+``` bash
+$ source venv/bin/activate
+```
+- Install the required packages
+``` bash
+$ pip install -r requirements.txt
+```
 ##### Tests execution:
 - Cd into src
 - To execute the tests:
