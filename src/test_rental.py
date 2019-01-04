@@ -1,4 +1,4 @@
-from .rental import HourRental, DayRental, WeekRental
+from .rental import HourRental, DayRental, WeekRental, PurchasedRental
 
 
 def test_hour():
@@ -18,3 +18,8 @@ def test_week():
     assert instance.detail.price == 60
     assert instance.detail.total_expense(2) == 120
 
+
+def test_purchased_rental():
+    instance = PurchasedRental(WeekRental(), 1)
+    assert isinstance(instance.time, int)
+    assert isinstance(instance.rental_type, WeekRental)

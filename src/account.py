@@ -64,4 +64,3 @@ class Account:
         if self._check_promotion():
             return self._apply_promotion(self._get_total())
         return self._get_total()
-
