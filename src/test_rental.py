@@ -1,4 +1,4 @@
-from src import HourRental, DayRental, WeekRental
+from .rental import HourRental, DayRental, WeekRental
 
 
 def test_hour():
