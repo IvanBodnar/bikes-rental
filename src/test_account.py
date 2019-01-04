@@ -1,8 +1,15 @@
 from .account import Account
-from .rental import HourRental, DayRental, WeekRental
+from .rental import HourRental, PurchasedRental
 
 
-def test_add_rental():
+class TestAccount:
     account = Account()
-    account.add_rental(HourRental())
-    assert len(account.rentals) == 1
+
+    def test_add_rental(self):
+        TestAccount.account.add_rental(PurchasedRental(HourRental(), 1))
+        assert len(TestAccount.account.rentals) == 1
+
+    def test_get_total_usage(self):
+        TestAccount.account.add_rental(PurchasedRental(HourRental(), 1))
+        assert TestAccount.account.get_total_usage() == 10
+
