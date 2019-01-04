@@ -3,11 +3,11 @@ from abc import ABC, abstractmethod
 
 class Promotion(ABC):
     @abstractmethod
-    def check_promotion_applies(self, rental_list):
+    def check_promotion_applies(self):
         pass
 
     @abstractmethod
-    def get_promotion_discount(self, rental_list):
+    def get_promotion_discount(self, total_price):
         pass
 
 
@@ -16,9 +16,10 @@ class FamilyRental(Promotion):
         self.rental_list = rental_list
         self.rentals_quantity = len(rental_list)
 
-    def check_promotion_applies(self, rental_list):
+    def check_promotion_applies(self):
         return 3 <= self.rentals_quantity <= 5
 
-    def get_promotion_discount(self, rental_list):
-        pass
+    def get_promotion_discount(self, total_price):
+        discount = (total_price / 100) * 30
+        return total_price - discount
 
