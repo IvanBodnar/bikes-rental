@@ -28,13 +28,13 @@ def test_check_promotion():
     account.add_rental(PurchasedRental(HourRental(), 1))
     account.add_rental(PurchasedRental(HourRental(), 1))
     account.add_promotion(FamilyRental)
-    assert account.check_promotion()
+    assert account._check_promotion()
 
     account1 = Account()
     account1.add_rental(PurchasedRental(HourRental(), 1))
     account1.add_rental(PurchasedRental(HourRental(), 1))
     account1.add_promotion(FamilyRental)
-    assert not account1.check_promotion()
+    assert not account1._check_promotion()
 
     account2 = Account()
     account2.add_rental(PurchasedRental(HourRental(), 1))
@@ -44,7 +44,7 @@ def test_check_promotion():
     account2.add_rental(PurchasedRental(HourRental(), 1))
     account2.add_rental(PurchasedRental(HourRental(), 1))
     account2.add_promotion(FamilyRental)
-    assert not account1.check_promotion()
+    assert not account1._check_promotion()
 
 
 def test_get_total_cost():
