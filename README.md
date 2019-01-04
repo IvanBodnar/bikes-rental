@@ -3,7 +3,7 @@
 - Cd into the cloned folder
 - Create a virtualenv (python 3.7 used) and activate it
 - Execute pip install -r requirements.txt
-##### To execute the tests:
+##### Tests execution:
 - Cd into src
 - To execute the tests:
 ``` bash
