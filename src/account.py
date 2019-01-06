@@ -53,7 +53,7 @@ class Account:
         """
         if self.promotion:
             promotion = self.promotion(self.rentals)
-            return promotion.get_promotion_discount(total_cost)
+            return promotion.get_promotion_discount()
         return total_cost
 
     def get_total_cost(self):
