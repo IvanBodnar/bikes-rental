@@ -32,3 +32,10 @@ In the case of the set of classes representing the rental business object, it ma
 to me to create the different types of rentals as distinct classes composed by a Rental class,
 which holds their common functionality. These classes in turn are used to compose a PurchasedRental class,
 which is going to be used to represent a concrete rental.
+
+##### UPDATE
+Family Rental promotion discount is now applied only to the rentals included in the promotion
+(3 to 5).  
+Changes are explained on the code comments, but basically the FamilyRental class sorts 
+the rentals in descending order (using their total_expense method), and then takes the 
+first 3 to 5 items, so later the discount can be applied only to them.
