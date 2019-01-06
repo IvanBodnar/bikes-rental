@@ -32,6 +32,12 @@ Promotion's interface
 """
 class FamilyRental(Promotion):
     def __init__(self, rental_list):
+        """
+        The rental_list is sorted in descending order using
+        the get_total_cost method as key. This is done in order
+        to later store the first 3 to 5 rentals on the no_promotion_list list.
+        :param rental_list: list
+        """
         self.rental_list = sorted(rental_list, key=lambda rental: rental.get_total_cost(), reverse=True)
         self.promotion_list = None
         self.no_promotion_list = None
@@ -41,6 +47,15 @@ class FamilyRental(Promotion):
         self.rentals_quantity = len(rental_list)
 
     def _split_promotion(self):
+        """
+        Splits the rental_list in two: self.promotion_list will hold
+        the items to which the promotion will be applied, and no_promotion_list
+        the rest.
+        self.promotion_list will have at least self.lower_limit rentals and at most
+        self.upper_limit (it's assumed that the account class wont pass a list if
+        conditions stated in check_promotion_applies are not met).
+        :return: void
+        """
         amount = self.rentals_quantity if self.rentals_quantity < self.upper_limit else self.upper_limit
         self.promotion_list, self.no_promotion_list = self.rental_list[:amount], self.rental_list[amount:]
 
@@ -48,6 +63,11 @@ class FamilyRental(Promotion):
         return self.rentals_quantity >= self.lower_limit
 
     def get_promotion_discount(self):
+        """
+        Calculates the total price to pay, applying the required discount to the items
+        included on self.promotion_list
+        :return: void
+        """
         self._split_promotion()
 
         total_promotion_list = sum( [rental.get_total_cost() for rental in self.promotion_list] )
